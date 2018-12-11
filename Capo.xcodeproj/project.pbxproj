@@ -13,6 +13,9 @@
 		021A3BA621BD7FCE00863A25 /* Capo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 021A3BA421BD7FCE00863A25 /* Capo.xcdatamodeld */; };
 		021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA721BD7FD100863A25 /* Assets.xcassets */; };
 		021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA921BD7FD100863A25 /* LaunchScreen.storyboard */; };
+		021A3BB621BD83DF00863A25 /* register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BB521BD83DF00863A25 /* register.graphql */; };
+		027EF49C21BD8B4F009870C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027EF49B21BD8B4F009870C1 /* API.swift */; };
+		8E1D92AD9CE1671F38FE6085 /* Pods_Capo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3F031035A3506583C9BB2A /* Pods_Capo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,11 @@
 		021A3BA721BD7FD100863A25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		021A3BAA21BD7FD100863A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		021A3BAC21BD7FD100863A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		021A3BB521BD83DF00863A25 /* register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = register.graphql; sourceTree = "<group>"; };
+		027EF49B21BD8B4F009870C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Capo/Pods-Capo.debug.xcconfig"; sourceTree = "<group>"; };
+		9A3F031035A3506583C9BB2A /* Pods_Capo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBBEC986B59141D9B4375E33 /* Pods-Capo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Capo/Pods-Capo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E1D92AD9CE1671F38FE6085 /* Pods_Capo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				021A3B9C21BD7FCD00863A25 /* Capo */,
 				021A3B9B21BD7FCD00863A25 /* Products */,
+				B675228335BFAD3A16A2FB12 /* Pods */,
+				17E6123B21DD39103AB9BB28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +67,8 @@
 		021A3B9C21BD7FCD00863A25 /* Capo */ = {
 			isa = PBXGroup;
 			children = (
+				027EF49B21BD8B4F009870C1 /* API.swift */,
+				021A3BB521BD83DF00863A25 /* register.graphql */,
 				021A3B9D21BD7FCD00863A25 /* AppDelegate.swift */,
 				021A3B9F21BD7FCD00863A25 /* ViewController.swift */,
 				021A3BA121BD7FCE00863A25 /* Main.storyboard */,
@@ -67,6 +80,23 @@
 			path = Capo;
 			sourceTree = "<group>";
 		};
+		17E6123B21DD39103AB9BB28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9A3F031035A3506583C9BB2A /* Pods_Capo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B675228335BFAD3A16A2FB12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */,
+				FBBEC986B59141D9B4375E33 /* Pods-Capo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +104,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 021A3BAF21BD7FD100863A25 /* Build configuration list for PBXNativeTarget "Capo" */;
 			buildPhases = (
+				29945587BC5167C23219F71E /* [CP] Check Pods Manifest.lock */,
+				021A3BB221BD807400863A25 /* Generate Apollo GraphQL API */,
 				021A3B9621BD7FCD00863A25 /* Sources */,
 				021A3B9721BD7FCD00863A25 /* Frameworks */,
 				021A3B9821BD7FCD00863A25 /* Resources */,
+				173D8476B153DA7BFDDBCBC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -128,10 +161,64 @@
 				021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */,
 				021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */,
 				021A3BA321BD7FCE00863A25 /* Main.storyboard in Resources */,
+				021A3BB621BD83DF00863A25 /* register.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		021A3BB221BD807400863A25 /* Generate Apollo GraphQL API */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Apollo GraphQL API";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APOLLO_FRAMEWORK_PATH=\"$(eval find $FRAMEWORK_SEARCH_PATHS -name \"Apollo.framework\" -maxdepth 1)\"\n\nif [ -z \"$APOLLO_FRAMEWORK_PATH\" ]; then\necho \"error: Couldn't find Apollo.framework in FRAMEWORK_SEARCH_PATHS; make sure to add the framework to your project.\"\nexit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n$APOLLO_FRAMEWORK_PATH/check-and-run-apollo-cli.sh codegen:generate --queries=\"$(find . -name '*.graphql')\" --schema=schema.json API.swift\n";
+		};
+		173D8476B153DA7BFDDBCBC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Capo/Pods-Capo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Capo/Pods-Capo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29945587BC5167C23219F71E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Capo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		021A3B9621BD7FCD00863A25 /* Sources */ = {
@@ -140,6 +227,7 @@
 			files = (
 				021A3BA021BD7FCD00863A25 /* ViewController.swift in Sources */,
 				021A3B9E21BD7FCD00863A25 /* AppDelegate.swift in Sources */,
+				027EF49C21BD8B4F009870C1 /* API.swift in Sources */,
 				021A3BA621BD7FCE00863A25 /* Capo.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +372,7 @@
 		};
 		021A3BB021BD7FD100863A25 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +391,7 @@
 		};
 		021A3BB121BD7FD100863A25 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBBEC986B59141D9B4375E33 /* Pods-Capo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
