@@ -67,6 +67,9 @@
 		0267801321C14AEA0060C2D1 /* RegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0267801221C14AEA0060C2D1 /* RegisterViewController.storyboard */; };
 		0267801521C157320060C2D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801421C157320060C2D1 /* Alert.swift */; };
 		0267801721C1580B0060C2D1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */; };
+		0267801921C1649B0060C2D1 /* ApolloHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801821C1649B0060C2D1 /* ApolloHelpers.swift */; };
+		0267801B21C16AF70060C2D1 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0267801A21C16AF70060C2D1 /* schema.json */; };
+		0267801D21C16E170060C2D1 /* User+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801C21C16E170060C2D1 /* User+Extensions.swift */; };
 		027EF49C21BD8B4F009870C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027EF49B21BD8B4F009870C1 /* API.swift */; };
 		8E1D92AD9CE1671F38FE6085 /* Pods_Capo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3F031035A3506583C9BB2A /* Pods_Capo.framework */; };
 /* End PBXBuildFile section */
@@ -134,6 +137,9 @@
 		0267801221C14AEA0060C2D1 /* RegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewController.storyboard; sourceTree = "<group>"; };
 		0267801421C157320060C2D1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		0267801821C1649B0060C2D1 /* ApolloHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApolloHelpers.swift; sourceTree = "<group>"; };
+		0267801A21C16AF70060C2D1 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		0267801C21C16E170060C2D1 /* User+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Extensions.swift"; sourceTree = "<group>"; };
 		027EF49B21BD8B4F009870C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Capo/Pods-Capo.debug.xcconfig"; sourceTree = "<group>"; };
 		9A3F031035A3506583C9BB2A /* Pods_Capo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +179,7 @@
 		021A3B9C21BD7FCD00863A25 /* Capo */ = {
 			isa = PBXGroup;
 			children = (
+				0267801A21C16AF70060C2D1 /* schema.json */,
 				021A3B9D21BD7FCD00863A25 /* AppDelegate.swift */,
 				02677F9321C146C30060C2D1 /* Vendor */,
 				02677F9021C1408E0060C2D1 /* Extensions */,
@@ -180,6 +187,7 @@
 				02677F4221C130BE0060C2D1 /* Scenes */,
 				02677F4021C12C480060C2D1 /* Helpers.swift */,
 				02677F6D21C1347F0060C2D1 /* CurrentUser.swift */,
+				0267801821C1649B0060C2D1 /* ApolloHelpers.swift */,
 				027EF49B21BD8B4F009870C1 /* API.swift */,
 				021A3BB521BD83DF00863A25 /* register.graphql */,
 				021A3B9F21BD7FCD00863A25 /* ViewController.swift */,
@@ -234,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				02677F7021C138960060C2D1 /* Model.swift */,
+				0267801C21C16E170060C2D1 /* User+Extensions.swift */,
 				021A3BA421BD7FCE00863A25 /* Capo.xcdatamodeld */,
 			);
 			path = Model;
@@ -425,6 +434,7 @@
 				021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */,
 				021A3BA321BD7FCE00863A25 /* Main.storyboard in Resources */,
 				02677F8221C139A50060C2D1 /* LoginViewController.storyboard in Resources */,
+				0267801B21C16AF70060C2D1 /* schema.json in Resources */,
 				021A3BB621BD83DF00863A25 /* register.graphql in Resources */,
 				0267800C21C147EC0060C2D1 /* themify.ttf in Resources */,
 				0267800E21C147EC0060C2D1 /* FontAwesome.ttf in Resources */,
@@ -502,6 +512,7 @@
 				02677F6721C131E80060C2D1 /* MenuRouter.swift in Sources */,
 				02677F5A21C1311E0060C2D1 /* UserProfileViewController.swift in Sources */,
 				02677F5921C1311E0060C2D1 /* UserProfileModels.swift in Sources */,
+				0267801921C1649B0060C2D1 /* ApolloHelpers.swift in Sources */,
 				02677F8F21C13DD20060C2D1 /* RegisterInteractor.swift in Sources */,
 				021A3BA021BD7FCD00863A25 /* ViewController.swift in Sources */,
 				02677F8C21C13DD20060C2D1 /* RegisterRouter.swift in Sources */,
@@ -525,6 +536,7 @@
 				02677FFF21C147EC0060C2D1 /* Octicon.swift in Sources */,
 				02677F7F21C139860060C2D1 /* LoginViewController.swift in Sources */,
 				0267800021C147EC0060C2D1 /* Iconic.swift in Sources */,
+				0267801D21C16E170060C2D1 /* User+Extensions.swift in Sources */,
 				02677F7C21C139860060C2D1 /* LoginWorker.swift in Sources */,
 				02677F6A21C131E80060C2D1 /* MenuInteractor.swift in Sources */,
 				0267801521C157320060C2D1 /* Alert.swift in Sources */,

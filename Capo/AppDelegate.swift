@@ -11,7 +11,6 @@ import CoreData
 import Apollo
 import DrawerController
 
-let apollo = ApolloClient(url: URL(string: "http://localhost:8080/graphql")!)
 let context = appDelegate.persistentContainer.viewContext
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 
@@ -36,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
+        apollo.client.cacheKeyForObject = { $0["id"] }
+
         let centerViewController: UIViewController
         if CurrentUser.getToken() != nil {
             let contr = getController(forName: UserProfileViewController.self)

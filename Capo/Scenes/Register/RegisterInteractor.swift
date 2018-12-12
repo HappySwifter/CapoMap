@@ -31,12 +31,20 @@ class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore
     
     func registerUser(request: Register.CreateUser.Request) {
         let mut = RegisterMutation(name: request.name, email: request.name, password: request.password)
-        apollo.perform(mutation: mut) { [weak self] res, error in
-            
-            if let error = error {
-                showAlert(title: error.localizedDescription) { }
+        apollo.client.perform(mutation: mut) { [weak self] res, error in
+            presentGraph(errors: res?.errors, error: error)
+            guard let data = res?.data else { return }
+            if let email = data.createUser?.email {
+                
             }
-            presentGraph(errors: res?.errors)
+            
+            let loginMut = LoginMutation(email: request.name, password: request.password)
+            apollo.client.perform(mutation: loginMut) { res, error in
+                presentGraph(errors: res?.errors, error: error)
+                guard let data = res?.data else { return }
+                print(data.loginUser?.user?.fragments.userPayload.email)
+                
+            }
         }
     }
     

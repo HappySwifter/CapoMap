@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-func getObjects<T: NSManagedObject>(withId id: String? = nil,
+func getObjects<T: NSManagedObject>(withId id: Int? = nil,
                                     limit: Int? = nil,
                                     sortDescriptors: [NSSortDescriptor]? = nil) -> [T] {
 
@@ -20,7 +20,7 @@ func getObjects<T: NSManagedObject>(withId id: String? = nil,
     fetchRequest.sortDescriptors = sortDescriptors
     
     if let id = id {
-        let predicate = NSPredicate(format: "id = %@", id)
+        let predicate = NSPredicate(format: "id = %i", id)
         fetchRequest.predicate = predicate
     }
     do {

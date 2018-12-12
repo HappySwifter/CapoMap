@@ -14,8 +14,8 @@ import UIKit
 struct CurrentUser {
     static func getUser() -> User? {
         let def = UserDefaults.standard
-        if let _ = def.string(forKey: "current_user_token_key"), let userId = def.string(forKey: "current_user_id_key") {
-            let user: [User] = getObjects(withId: userId, limit: nil, sortDescriptors: nil)
+        if let _ = def.string(forKey: "current_user_token_key"), let userId = def.object(forKey: "current_user_id_key") as? NSNumber {
+            let user: [User] = getObjects(withId: userId.intValue, limit: nil, sortDescriptors: nil)
             return user.first
         } else {
             return nil

@@ -11,7 +11,7 @@
 //
 
 import UIKit
-
+import Apollo
 
 protocol LoginDisplayLogic: class
 {
@@ -76,6 +76,11 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    #if DEBUG
+    emailField.text = "Artem"
+    passwordField.text = "4005"
+    #endif
+    
     loginButton.applyLoginSettings(title: "Войти")
     registerButton.applyLoginSettings(title: "Регистрация")
 
@@ -98,10 +103,32 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   }
     
     @IBAction func loginPressed() {
+        guard let name = emailField.text, name.count > 0 else {
+            return
+        }
+        guard let password = passwordField.text, password.count > 0 else {
+            return
+        }
         
+        let loginMut = LoginMutation(email: name, password: password)
+        apollo.client.perform(mutation: loginMut) { res, error in
+            presentGraph(errors: res?.errors, error: error)
+            guard let data = res?.data else { return }
+            if let token = data.loginUser?.string, let userPayload = data.loginUser?.user?.fragments.userPayload {
+                let user = User.saveUser(data: userPayload)
+                CurrentUser.save(user: user, token: token)
+                
+                
+                print(CurrentUser.getToken())
+                print(CurrentUser.getUser())
+            }
+            
+        }
     }
     
     @IBAction func registerPressed() {
         router?.routeToRegisterController()
     }
 }
+
+

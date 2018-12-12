@@ -12,7 +12,7 @@ import Apollo
 
 
 func showAlert(title: String, okCB: (() -> Void)?) {
-    let alert = UIAlertController(title: title, message: title, preferredStyle: .alert)
+    let alert = UIAlertController(title: "Ошибка", message: title, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "ОК", style: .default) { (action) in
         okCB?()
     }
@@ -21,16 +21,19 @@ func showAlert(title: String, okCB: (() -> Void)?) {
 
 }
 
-@discardableResult func presentGraph(errors: [GraphQLError]?, from: String = #function) -> Bool {
+@discardableResult func presentGraph(errors: [GraphQLError]?, error: Error?, from: String = #function) -> Bool {
+    var hasError = false
+    if let error = error {
+        showAlert(title: error.localizedDescription) { }
+        hasError = true
+    }
     if let errors = errors {
         let message = errors.reduce("", { $0 + $1.description + "..." })
         Log("\(from):: \(message)", type: .error)
         showAlert(title: message) {}
-        // print(errors.first?.locations ?? "")
-        return true
-    } else {
-        return false
+        hasError = true
     }
+    return hasError
 }
 
 

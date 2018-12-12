@@ -1,6 +1,21 @@
 
 mutation Register($name: String, $email: String, $password: String) {
-createUser(name: $name, email: $email, password: $password) {
-email
+    createUser(name: $name, email: $email, password: $password) {
+        email
+    }
 }
+
+mutation Login($email: String, $password: String) {
+    loginUser(email: $email, password: $password) {
+        string
+        expiresAt
+        user {
+            ...UserPayload
+        }
+    }
+}
+
+fragment UserPayload on User {
+    email
+    id
 }
