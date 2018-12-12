@@ -14,6 +14,36 @@
 		021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA721BD7FD100863A25 /* Assets.xcassets */; };
 		021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA921BD7FD100863A25 /* LaunchScreen.storyboard */; };
 		021A3BB621BD83DF00863A25 /* register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BB521BD83DF00863A25 /* register.graphql */; };
+		02677F4121C12C480060C2D1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F4021C12C480060C2D1 /* Helpers.swift */; };
+		02677F5621C1311E0060C2D1 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */; };
+		02677F5721C1311E0060C2D1 /* UserProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */; };
+		02677F5821C1311E0060C2D1 /* UserProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5221C1311E0060C2D1 /* UserProfileRouter.swift */; };
+		02677F5921C1311E0060C2D1 /* UserProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5321C1311E0060C2D1 /* UserProfileModels.swift */; };
+		02677F5A21C1311E0060C2D1 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5421C1311E0060C2D1 /* UserProfileViewController.swift */; };
+		02677F5B21C1311E0060C2D1 /* UserProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5521C1311E0060C2D1 /* UserProfileInteractor.swift */; };
+		02677F5D21C131340060C2D1 /* UserProfileViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02677F5C21C131340060C2D1 /* UserProfileViewController.storyboard */; };
+		02677F6521C131E80060C2D1 /* MenuPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5F21C131E80060C2D1 /* MenuPresenter.swift */; };
+		02677F6621C131E80060C2D1 /* MenuWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6021C131E80060C2D1 /* MenuWorker.swift */; };
+		02677F6721C131E80060C2D1 /* MenuRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6121C131E80060C2D1 /* MenuRouter.swift */; };
+		02677F6821C131E80060C2D1 /* MenuModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6221C131E80060C2D1 /* MenuModels.swift */; };
+		02677F6921C131E80060C2D1 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6321C131E80060C2D1 /* MenuViewController.swift */; };
+		02677F6A21C131E80060C2D1 /* MenuInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6421C131E80060C2D1 /* MenuInteractor.swift */; };
+		02677F6C21C132140060C2D1 /* MenuViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02677F6B21C132140060C2D1 /* MenuViewController.storyboard */; };
+		02677F6E21C1347F0060C2D1 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F6D21C1347F0060C2D1 /* CurrentUser.swift */; };
+		02677F7221C138960060C2D1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7021C138960060C2D1 /* Model.swift */; };
+		02677F7B21C139860060C2D1 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7521C139860060C2D1 /* LoginPresenter.swift */; };
+		02677F7C21C139860060C2D1 /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7621C139860060C2D1 /* LoginWorker.swift */; };
+		02677F7D21C139860060C2D1 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7721C139860060C2D1 /* LoginRouter.swift */; };
+		02677F7E21C139860060C2D1 /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7821C139860060C2D1 /* LoginModels.swift */; };
+		02677F7F21C139860060C2D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7921C139860060C2D1 /* LoginViewController.swift */; };
+		02677F8021C139860060C2D1 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F7A21C139860060C2D1 /* LoginInteractor.swift */; };
+		02677F8221C139A50060C2D1 /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02677F8121C139A50060C2D1 /* LoginViewController.storyboard */; };
+		02677F8A21C13DD20060C2D1 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8421C13DD20060C2D1 /* RegisterPresenter.swift */; };
+		02677F8B21C13DD20060C2D1 /* RegisterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8521C13DD20060C2D1 /* RegisterWorker.swift */; };
+		02677F8C21C13DD20060C2D1 /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8621C13DD20060C2D1 /* RegisterRouter.swift */; };
+		02677F8D21C13DD20060C2D1 /* RegisterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8721C13DD20060C2D1 /* RegisterModels.swift */; };
+		02677F8E21C13DD20060C2D1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8821C13DD20060C2D1 /* RegisterViewController.swift */; };
+		02677F8F21C13DD20060C2D1 /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F8921C13DD20060C2D1 /* RegisterInteractor.swift */; };
 		027EF49C21BD8B4F009870C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027EF49B21BD8B4F009870C1 /* API.swift */; };
 		8E1D92AD9CE1671F38FE6085 /* Pods_Capo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3F031035A3506583C9BB2A /* Pods_Capo.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +58,36 @@
 		021A3BAA21BD7FD100863A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		021A3BAC21BD7FD100863A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021A3BB521BD83DF00863A25 /* register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = register.graphql; sourceTree = "<group>"; };
+		02677F4021C12C480060C2D1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
+		02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWorker.swift; sourceTree = "<group>"; };
+		02677F5221C1311E0060C2D1 /* UserProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRouter.swift; sourceTree = "<group>"; };
+		02677F5321C1311E0060C2D1 /* UserProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModels.swift; sourceTree = "<group>"; };
+		02677F5421C1311E0060C2D1 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		02677F5521C1311E0060C2D1 /* UserProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInteractor.swift; sourceTree = "<group>"; };
+		02677F5C21C131340060C2D1 /* UserProfileViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserProfileViewController.storyboard; sourceTree = "<group>"; };
+		02677F5F21C131E80060C2D1 /* MenuPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresenter.swift; sourceTree = "<group>"; };
+		02677F6021C131E80060C2D1 /* MenuWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuWorker.swift; sourceTree = "<group>"; };
+		02677F6121C131E80060C2D1 /* MenuRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRouter.swift; sourceTree = "<group>"; };
+		02677F6221C131E80060C2D1 /* MenuModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModels.swift; sourceTree = "<group>"; };
+		02677F6321C131E80060C2D1 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		02677F6421C131E80060C2D1 /* MenuInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuInteractor.swift; sourceTree = "<group>"; };
+		02677F6B21C132140060C2D1 /* MenuViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuViewController.storyboard; sourceTree = "<group>"; };
+		02677F6D21C1347F0060C2D1 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		02677F7021C138960060C2D1 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		02677F7521C139860060C2D1 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		02677F7621C139860060C2D1 /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		02677F7721C139860060C2D1 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		02677F7821C139860060C2D1 /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		02677F7921C139860060C2D1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02677F7A21C139860060C2D1 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		02677F8121C139A50060C2D1 /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		02677F8421C13DD20060C2D1 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		02677F8521C13DD20060C2D1 /* RegisterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterWorker.swift; sourceTree = "<group>"; };
+		02677F8621C13DD20060C2D1 /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		02677F8721C13DD20060C2D1 /* RegisterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModels.swift; sourceTree = "<group>"; };
+		02677F8821C13DD20060C2D1 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		02677F8921C13DD20060C2D1 /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
 		027EF49B21BD8B4F009870C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Capo/Pods-Capo.debug.xcconfig"; sourceTree = "<group>"; };
 		9A3F031035A3506583C9BB2A /* Pods_Capo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,17 +127,95 @@
 		021A3B9C21BD7FCD00863A25 /* Capo */ = {
 			isa = PBXGroup;
 			children = (
+				021A3B9D21BD7FCD00863A25 /* AppDelegate.swift */,
+				02677F6F21C134B50060C2D1 /* Model */,
+				02677F4221C130BE0060C2D1 /* Scenes */,
+				02677F4021C12C480060C2D1 /* Helpers.swift */,
+				02677F6D21C1347F0060C2D1 /* CurrentUser.swift */,
 				027EF49B21BD8B4F009870C1 /* API.swift */,
 				021A3BB521BD83DF00863A25 /* register.graphql */,
-				021A3B9D21BD7FCD00863A25 /* AppDelegate.swift */,
 				021A3B9F21BD7FCD00863A25 /* ViewController.swift */,
 				021A3BA121BD7FCE00863A25 /* Main.storyboard */,
 				021A3BA721BD7FD100863A25 /* Assets.xcassets */,
 				021A3BA921BD7FD100863A25 /* LaunchScreen.storyboard */,
 				021A3BAC21BD7FD100863A25 /* Info.plist */,
-				021A3BA421BD7FCE00863A25 /* Capo.xcdatamodeld */,
 			);
 			path = Capo;
+			sourceTree = "<group>";
+		};
+		02677F4221C130BE0060C2D1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				02677F7421C139710060C2D1 /* Login */,
+				02677F8321C13DC10060C2D1 /* Register */,
+				02677F5E21C131D70060C2D1 /* Menu */,
+				02677F4321C130E10060C2D1 /* Profile */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		02677F4321C130E10060C2D1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */,
+				02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */,
+				02677F5221C1311E0060C2D1 /* UserProfileRouter.swift */,
+				02677F5321C1311E0060C2D1 /* UserProfileModels.swift */,
+				02677F5421C1311E0060C2D1 /* UserProfileViewController.swift */,
+				02677F5C21C131340060C2D1 /* UserProfileViewController.storyboard */,
+				02677F5521C1311E0060C2D1 /* UserProfileInteractor.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		02677F5E21C131D70060C2D1 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				02677F5F21C131E80060C2D1 /* MenuPresenter.swift */,
+				02677F6021C131E80060C2D1 /* MenuWorker.swift */,
+				02677F6121C131E80060C2D1 /* MenuRouter.swift */,
+				02677F6221C131E80060C2D1 /* MenuModels.swift */,
+				02677F6321C131E80060C2D1 /* MenuViewController.swift */,
+				02677F6B21C132140060C2D1 /* MenuViewController.storyboard */,
+				02677F6421C131E80060C2D1 /* MenuInteractor.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		02677F6F21C134B50060C2D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02677F7021C138960060C2D1 /* Model.swift */,
+				021A3BA421BD7FCE00863A25 /* Capo.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02677F7421C139710060C2D1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02677F7521C139860060C2D1 /* LoginPresenter.swift */,
+				02677F7621C139860060C2D1 /* LoginWorker.swift */,
+				02677F7721C139860060C2D1 /* LoginRouter.swift */,
+				02677F7821C139860060C2D1 /* LoginModels.swift */,
+				02677F7921C139860060C2D1 /* LoginViewController.swift */,
+				02677F8121C139A50060C2D1 /* LoginViewController.storyboard */,
+				02677F7A21C139860060C2D1 /* LoginInteractor.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		02677F8321C13DC10060C2D1 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				02677F8421C13DD20060C2D1 /* RegisterPresenter.swift */,
+				02677F8521C13DD20060C2D1 /* RegisterWorker.swift */,
+				02677F8621C13DD20060C2D1 /* RegisterRouter.swift */,
+				02677F8721C13DD20060C2D1 /* RegisterModels.swift */,
+				02677F8821C13DD20060C2D1 /* RegisterViewController.swift */,
+				02677F8921C13DD20060C2D1 /* RegisterInteractor.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		17E6123B21DD39103AB9BB28 /* Frameworks */ = {
@@ -158,9 +296,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02677F5D21C131340060C2D1 /* UserProfileViewController.storyboard in Resources */,
 				021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */,
+				02677F6C21C132140060C2D1 /* MenuViewController.storyboard in Resources */,
 				021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */,
 				021A3BA321BD7FCE00863A25 /* Main.storyboard in Resources */,
+				02677F8221C139A50060C2D1 /* LoginViewController.storyboard in Resources */,
 				021A3BB621BD83DF00863A25 /* register.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,10 +331,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Capo/Pods-Capo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Apollo/Apollo.framework",
+				"${BUILT_PRODUCTS_DIR}/DrawerController/DrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Apollo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -225,10 +370,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02677F5721C1311E0060C2D1 /* UserProfileWorker.swift in Sources */,
+				02677F6721C131E80060C2D1 /* MenuRouter.swift in Sources */,
+				02677F5A21C1311E0060C2D1 /* UserProfileViewController.swift in Sources */,
+				02677F5921C1311E0060C2D1 /* UserProfileModels.swift in Sources */,
+				02677F8F21C13DD20060C2D1 /* RegisterInteractor.swift in Sources */,
 				021A3BA021BD7FCD00863A25 /* ViewController.swift in Sources */,
+				02677F8C21C13DD20060C2D1 /* RegisterRouter.swift in Sources */,
+				02677F6821C131E80060C2D1 /* MenuModels.swift in Sources */,
+				02677F5621C1311E0060C2D1 /* UserProfilePresenter.swift in Sources */,
+				02677F8A21C13DD20060C2D1 /* RegisterPresenter.swift in Sources */,
+				02677F6921C131E80060C2D1 /* MenuViewController.swift in Sources */,
+				02677F8B21C13DD20060C2D1 /* RegisterWorker.swift in Sources */,
+				02677F5821C1311E0060C2D1 /* UserProfileRouter.swift in Sources */,
+				02677F8D21C13DD20060C2D1 /* RegisterModels.swift in Sources */,
+				02677F7E21C139860060C2D1 /* LoginModels.swift in Sources */,
+				02677F8021C139860060C2D1 /* LoginInteractor.swift in Sources */,
+				02677F7D21C139860060C2D1 /* LoginRouter.swift in Sources */,
+				02677F7B21C139860060C2D1 /* LoginPresenter.swift in Sources */,
 				021A3B9E21BD7FCD00863A25 /* AppDelegate.swift in Sources */,
+				02677F7F21C139860060C2D1 /* LoginViewController.swift in Sources */,
+				02677F7C21C139860060C2D1 /* LoginWorker.swift in Sources */,
+				02677F6A21C131E80060C2D1 /* MenuInteractor.swift in Sources */,
+				02677F8E21C13DD20060C2D1 /* RegisterViewController.swift in Sources */,
 				027EF49C21BD8B4F009870C1 /* API.swift in Sources */,
+				02677F6621C131E80060C2D1 /* MenuWorker.swift in Sources */,
+				02677F5B21C1311E0060C2D1 /* UserProfileInteractor.swift in Sources */,
+				02677F4121C12C480060C2D1 /* Helpers.swift in Sources */,
+				02677F7221C138960060C2D1 /* Model.swift in Sources */,
 				021A3BA621BD7FCE00863A25 /* Capo.xcdatamodeld in Sources */,
+				02677F6E21C1347F0060C2D1 /* CurrentUser.swift in Sources */,
+				02677F6521C131E80060C2D1 /* MenuPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
