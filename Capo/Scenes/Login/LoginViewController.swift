@@ -12,6 +12,7 @@
 
 import UIKit
 
+
 protocol LoginDisplayLogic: class
 {
   func displaySomething(viewModel: Login.Something.ViewModel)
@@ -68,13 +69,15 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
     
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var emailField: UIButton!
-    @IBOutlet weak var emailField: UIButton!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loginButton: LGButton!
+    @IBOutlet weak var registerButton: LGButton!
     
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    loginButton.applyCapoSettings(title: "Продолжить", loadingTitle: "Загрузка...")
+
     doSomething()
   }
   

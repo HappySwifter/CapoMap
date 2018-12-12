@@ -7,7 +7,7 @@ target 'Capo' do
   pod "Apollo"
   pod 'DrawerController'
   pod 'SwiftMessages'
-  pod 'LGButton'
+#  pod 'LGButton'
 
 end
 
@@ -19,7 +19,7 @@ post_install do |installer|
         end
         if target.name == 'DrawerController'
             target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '3.2'
+                config.build_settings['SWIFT_VERSION'] = '3.0'
             end
         end
 
