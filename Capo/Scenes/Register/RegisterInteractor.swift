@@ -14,28 +14,30 @@ import UIKit
 
 protocol RegisterBusinessLogic
 {
-  func doSomething(request: Register.Something.Request)
+    func registerUser(request: Register.CreateUser.Request)
 }
 
 protocol RegisterDataStore
 {
-  //var name: String { get set }
+    //var name: String { get set }
 }
 
 class RegisterInteractor: RegisterBusinessLogic, RegisterDataStore
 {
-  var presenter: RegisterPresentationLogic?
-  var worker: RegisterWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Register.Something.Request)
-  {
-    worker = RegisterWorker()
-    worker?.doSomeWork()
+    var presenter: RegisterPresentationLogic?
+    var worker: RegisterWorker?
     
-    let response = Register.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    // MARK: Do something
+    
+    func registerUser(request: Register.CreateUser.Request) {
+        let mut = RegisterMutation(name: request.name, email: request.name, password: request.password)
+        apollo.perform(mutation: mut) { [weak self] res, error in
+            
+            if let error = error {
+                showAlert(title: error.localizedDescription) { }
+            }
+            presentGraph(errors: res?.errors)
+        }
+    }
+    
 }

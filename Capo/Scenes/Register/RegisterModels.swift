@@ -14,18 +14,24 @@ import UIKit
 
 enum Register
 {
-  // MARK: Use cases
-  
-  enum Something
-  {
-    struct Request
+    // MARK: Use cases
+    
+    enum CreateUser
     {
+        struct Request
+        {
+            let name: String
+            let password: String
+            let confirmPassword: String
+            let phone: String
+            let city: String
+        }
+        
+        struct Response
+        {
+        }
+        struct ViewModel
+        {
+        }
     }
-    struct Response
-    {
-    }
-    struct ViewModel
-    {
-    }
-  }
 }

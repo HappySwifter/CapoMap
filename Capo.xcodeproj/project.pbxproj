@@ -64,6 +64,9 @@
 		0267800F21C147EC0060C2D1 /* open-iconic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02677FFC21C147EC0060C2D1 /* open-iconic.ttf */; };
 		0267801021C147EC0060C2D1 /* MaterialIcons-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02677FFD21C147EC0060C2D1 /* MaterialIcons-Regular.ttf */; };
 		0267801121C147EC0060C2D1 /* map-icons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 02677FFE21C147EC0060C2D1 /* map-icons.ttf */; };
+		0267801321C14AEA0060C2D1 /* RegisterViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0267801221C14AEA0060C2D1 /* RegisterViewController.storyboard */; };
+		0267801521C157320060C2D1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801421C157320060C2D1 /* Alert.swift */; };
+		0267801721C1580B0060C2D1 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */; };
 		027EF49C21BD8B4F009870C1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027EF49B21BD8B4F009870C1 /* API.swift */; };
 		8E1D92AD9CE1671F38FE6085 /* Pods_Capo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A3F031035A3506583C9BB2A /* Pods_Capo.framework */; };
 /* End PBXBuildFile section */
@@ -128,6 +131,9 @@
 		02677FFC21C147EC0060C2D1 /* open-iconic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-iconic.ttf"; sourceTree = "<group>"; };
 		02677FFD21C147EC0060C2D1 /* MaterialIcons-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MaterialIcons-Regular.ttf"; sourceTree = "<group>"; };
 		02677FFE21C147EC0060C2D1 /* map-icons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "map-icons.ttf"; sourceTree = "<group>"; };
+		0267801221C14AEA0060C2D1 /* RegisterViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterViewController.storyboard; sourceTree = "<group>"; };
+		0267801421C157320060C2D1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		027EF49B21BD8B4F009870C1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		17A3181F05440D09DD077246 /* Pods-Capo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Capo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Capo/Pods-Capo.debug.xcconfig"; sourceTree = "<group>"; };
 		9A3F031035A3506583C9BB2A /* Pods_Capo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Capo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +261,7 @@
 				02677F8621C13DD20060C2D1 /* RegisterRouter.swift */,
 				02677F8721C13DD20060C2D1 /* RegisterModels.swift */,
 				02677F8821C13DD20060C2D1 /* RegisterViewController.swift */,
+				0267801221C14AEA0060C2D1 /* RegisterViewController.storyboard */,
 				02677F8921C13DD20060C2D1 /* RegisterInteractor.swift */,
 			);
 			path = Register;
@@ -263,6 +270,8 @@
 		02677F9021C1408E0060C2D1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */,
+				0267801421C157320060C2D1 /* Alert.swift */,
 				02677F9121C140990060C2D1 /* LGButtonExtensions.swift */,
 			);
 			path = Extensions;
@@ -408,6 +417,7 @@
 				0267801121C147EC0060C2D1 /* map-icons.ttf in Resources */,
 				021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */,
 				0267800D21C147EC0060C2D1 /* Ionicons.ttf in Resources */,
+				0267801321C14AEA0060C2D1 /* RegisterViewController.storyboard in Resources */,
 				0267801021C147EC0060C2D1 /* MaterialIcons-Regular.ttf in Resources */,
 				0267800A21C147EC0060C2D1 /* octicons.ttf in Resources */,
 				0267800B21C147EC0060C2D1 /* LGButton.xib in Resources */,
@@ -488,6 +498,7 @@
 			files = (
 				02677F5721C1311E0060C2D1 /* UserProfileWorker.swift in Sources */,
 				0267800321C147EC0060C2D1 /* MaterialIcon.swift in Sources */,
+				0267801721C1580B0060C2D1 /* UIViewControllerExtension.swift in Sources */,
 				02677F6721C131E80060C2D1 /* MenuRouter.swift in Sources */,
 				02677F5A21C1311E0060C2D1 /* UserProfileViewController.swift in Sources */,
 				02677F5921C1311E0060C2D1 /* UserProfileModels.swift in Sources */,
@@ -516,6 +527,7 @@
 				0267800021C147EC0060C2D1 /* Iconic.swift in Sources */,
 				02677F7C21C139860060C2D1 /* LoginWorker.swift in Sources */,
 				02677F6A21C131E80060C2D1 /* MenuInteractor.swift in Sources */,
+				0267801521C157320060C2D1 /* Alert.swift in Sources */,
 				02677F8E21C13DD20060C2D1 /* RegisterViewController.swift in Sources */,
 				0267800221C147EC0060C2D1 /* MapIcon.swift in Sources */,
 				0267800421C147EC0060C2D1 /* IonIcons.swift in Sources */,

@@ -14,76 +14,112 @@ import UIKit
 
 protocol RegisterDisplayLogic: class
 {
-  func displaySomething(viewModel: Register.Something.ViewModel)
+    func displaySomething(viewModel: Register.CreateUser.Request)
 }
 
-class RegisterViewController: UIViewController, RegisterDisplayLogic
+class RegisterViewController: UITableViewController, RegisterDisplayLogic
 {
-  var interactor: RegisterBusinessLogic?
-  var router: (NSObjectProtocol & RegisterRoutingLogic & RegisterDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = RegisterInteractor()
-    let presenter = RegisterPresenter()
-    let router = RegisterRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var interactor: RegisterBusinessLogic?
+    var router: (NSObjectProtocol & RegisterRoutingLogic & RegisterDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Register.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Register.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = RegisterInteractor()
+        let presenter = RegisterPresenter()
+        let router = RegisterRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
+    @IBOutlet weak var cityField: UITextField!
+    @IBOutlet weak var nextButton: LGButton!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        #if DEBUG
+        nameField.text = "Artem"
+        passwordField.text = "4005"
+        confirmPasswordField.text = "4005"
+        phoneField.text = "99912345678"
+        cityField.text = "Moscow"
+        #endif
+    }
+    
+    // MARK: Do something
+    
+    //@IBOutlet weak var nameTextField: UITextField!
+    
+    func displaySomething(viewModel: Register.CreateUser.Request) {
+        
+    }
+
+    
+    @IBAction func cancelTouched() {
+        router?.routeToLoginController()
+    }
+    
+    @IBAction func nextTouched() {
+        guard let name = nameField.text, name.count > 0 else {
+            return
+        }
+        guard let password = passwordField.text, password.count > 0 else {
+            return
+        }
+        guard let confirmPassword = confirmPasswordField.text, confirmPassword.count > 0 else {
+            return
+        }
+        guard password == confirmPassword else {
+            return
+        }
+        guard let phone = phoneField.text, phone.count > 0 else {
+            return
+        }
+        guard let city = cityField.text, city.count > 0 else {
+            return
+        }
+        let req = Register.CreateUser.Request(name: name, password: password, confirmPassword: confirmPassword, phone: phone, city: city)
+        interactor?.registerUser(request: req)
+    }
 }

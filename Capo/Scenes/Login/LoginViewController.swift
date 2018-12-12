@@ -76,7 +76,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    loginButton.applyCapoSettings(title: "Продолжить", loadingTitle: "Загрузка...")
+    loginButton.applyLoginSettings(title: "Войти")
+    registerButton.applyLoginSettings(title: "Регистрация")
 
     doSomething()
   }
@@ -95,4 +96,12 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   {
     //nameTextField.text = viewModel.name
   }
+    
+    @IBAction func loginPressed() {
+        
+    }
+    
+    @IBAction func registerPressed() {
+        router?.routeToRegisterController()
+    }
 }

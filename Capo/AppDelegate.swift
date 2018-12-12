@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let centerViewController: UIViewController
         if CurrentUser.getToken() != nil {
-            let contr = getController(forName: UserProfileViewController.self, showMenuButton: false)
+            let contr = getController(forName: UserProfileViewController.self)
             let nav = UINavigationController(rootViewController: contr)
             centerViewController = nav
         } else {
@@ -47,10 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             centerViewController = contr
         }
         
-        let menuViewController = getController(forName: MenuViewController.self)
+        let menuViewController = getController(forName: MenuViewController.self, showMenuButton: false)
         let menuNav = UINavigationController(rootViewController: menuViewController)
         
-        self.drawerController = DrawerController(centerViewController: centerViewController, rightDrawerViewController: menuNav)
+        self.drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: menuNav)
         
         self.drawerController?.maximumRightDrawerWidth = UIScreen.main.bounds.size.width - 75
         self.drawerController?.openDrawerGestureModeMask = .all
