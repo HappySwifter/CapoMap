@@ -8,6 +8,15 @@
 
 import Apollo
 
+
+
+
+#if targetEnvironment(simulator)
+    let isSimulator = true
+#else
+    let isSimulator = false
+#endif
+
 let apollo = Apollo()
 
 class Apollo {
@@ -20,7 +29,14 @@ class Apollo {
             if let token = CurrentUser.getToken() {
                 configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(token)"]
             }
-            let url = URL(string: "http://localhost:8080/graphql")!
+            
+            let url: URL
+            if isSimulator {
+                url = URL(string: "http://localhost:8080/graphql")!
+            } else {
+                url = URL(string: "http://192.168.1.63:8080/graphql")!
+            }
+            
             self.apollo = ApolloClient(networkTransport: HTTPNetworkTransport(url: url, configuration: configuration))
             return self.apollo!
         }

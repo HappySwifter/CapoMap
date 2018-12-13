@@ -72,13 +72,16 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginButton: LGButton!
     @IBOutlet weak var registerButton: LGButton!
-    
+    @IBOutlet weak var prodDevControl: UISegmentedControl!
+
   override func viewDidLoad()
   {
     super.viewDidLoad()
     #if DEBUG
     emailField.text = "Artem"
     passwordField.text = "4005"
+    #else
+    rodDevControl.isHidden = true
     #endif
     
     loginButton.applyLoginSettings(title: "Войти")
@@ -128,6 +131,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     @IBAction func registerPressed() {
         router?.routeToRegisterController()
+    }
+    
+    @IBAction func prodDevControlValueChanged() {
+        
     }
 }
 

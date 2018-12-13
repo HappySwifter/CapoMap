@@ -50,14 +50,33 @@
                                     <action selector="registerPressed" destination="o1o-L7-GWB" eventType="touchUpInside" id="SUV-2D-ZFa"/>
                                 </connections>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="G3Z-PC-iSc">
+                                <rect key="frame" x="112.5" y="619" width="150" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="0Sn-mV-AKk"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Dev"/>
+                                    <segment title="Prod"/>
+                                </segments>
+                                <color key="tintColor" red="0.92748679577464788" green="0.44519538497042255" blue="0.25968309859154931" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="prodDevControlValueChanged" destination="o1o-L7-GWB" eventType="valueChanged" id="5p1-xa-TE9"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.78039215689999997" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="QSl-BX-ENr" firstAttribute="bottom" secondItem="G3Z-PC-iSc" secondAttribute="bottom" constant="20" id="A9p-UM-wBP"/>
+                            <constraint firstItem="G3Z-PC-iSc" firstAttribute="centerX" secondItem="P75-p2-ln9" secondAttribute="centerX" id="ihI-0x-RR5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="QSl-BX-ENr"/>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="x8I-IR-Rm5" id="Nt6-zJ-ivT"/>
                         <outlet property="loginButton" destination="D0e-89-uZi" id="ejd-QS-OM1"/>
                         <outlet property="passwordField" destination="wjX-Ci-KyN" id="D4J-mV-3Ti"/>
+                        <outlet property="prodDevControl" destination="G3Z-PC-iSc" id="6SA-Fy-dKj"/>
                         <outlet property="registerButton" destination="Hlz-rz-sKY" id="SGy-T7-ISO"/>
                     </connections>
                 </viewController>
