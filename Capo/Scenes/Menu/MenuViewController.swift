@@ -17,7 +17,7 @@ protocol MenuDisplayLogic: class
     func displaySomething(viewModel: Menu.Something.ViewModel)
 }
 
-class MenuViewController: UIViewController, MenuDisplayLogic
+class MenuViewController: UIViewController, MenuDisplayLogic, UITableViewDelegate, UITableViewDataSource
 {
     var interactor: MenuBusinessLogic?
     var router: (NSObjectProtocol & MenuRoutingLogic & MenuDataPassing)?

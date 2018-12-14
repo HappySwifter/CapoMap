@@ -127,11 +127,11 @@ extension UIViewController {
     
     func addMenuButton() {
         let leftDrawerButton = DrawerBarButtonItem(target: self, action: #selector(self.leftDrawerButtonPress))
-        self.navigationItem.setRightBarButton(leftDrawerButton, animated: false)
+        self.navigationItem.setLeftBarButton(leftDrawerButton, animated: false)
     }
     
     @objc func leftDrawerButtonPress(sender: AnyObject?) {
-        self.evo_drawerController?.toggleDrawerSide(.right, animated: true, completion: nil)
+        self.evo_drawerController?.toggleDrawerSide(.left, animated: true, completion: nil)
     }
     
 }

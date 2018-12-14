@@ -14,7 +14,7 @@ import UIKit
 
 protocol RegisterDisplayLogic: class
 {
-    func displaySomething(viewModel: Register.CreateUser.Request)
+    func displayRegisternigSuccess(viewModel: Register.CreateUser.ViewModel)
 }
 
 class RegisterViewController: UITableViewController, RegisterDisplayLogic
@@ -87,17 +87,13 @@ class RegisterViewController: UITableViewController, RegisterDisplayLogic
         #endif
     }
     
-    // MARK: Do something
-    
-    //@IBOutlet weak var nameTextField: UITextField!
-    
-    func displaySomething(viewModel: Register.CreateUser.Request) {
-        
-    }
 
+    func displayRegisternigSuccess(viewModel: Register.CreateUser.ViewModel) {
+        router?.routeToLoginController(credentials: viewModel.credentials)
+    }
     
     @IBAction func cancelTouched() {
-        router?.routeToLoginController()
+        router?.routeToLoginController(credentials: nil)
     }
     
     @IBAction func nextTouched() {
@@ -119,7 +115,8 @@ class RegisterViewController: UITableViewController, RegisterDisplayLogic
         guard let city = cityField.text, city.count > 0 else {
             return
         }
-        let req = Register.CreateUser.Request(name: name, password: password, confirmPassword: confirmPassword, phone: phone, city: city)
+        let credentials = Credentials(email: name, password: password)
+        let req = Register.CreateUser.Request(credentials: credentials, confirmPassword: confirmPassword, phone: phone, city: city)
         interactor?.registerUser(request: req)
     }
 }

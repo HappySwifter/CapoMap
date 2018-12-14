@@ -15,6 +15,7 @@ import UIKit
 @objc protocol LoginRoutingLogic
 {
     func routeToRegisterController()
+    func routeToProfile()
 }
 
 protocol LoginDataPassing
@@ -29,7 +30,12 @@ class LoginRouter: NSObject, LoginRoutingLogic, LoginDataPassing
     
     func routeToRegisterController() {
         let contr = getController(forName: RegisterViewController.self)
-        viewController?.present(contr, animated: true, completion: nil)
+        viewController?.navigationController?.pushViewController(contr, animated: true)
+    }
+    
+    func routeToProfile() {
+        let contr = getController(forName: UserProfileViewController.self, showMenuButton: true)
+        viewController?.setCenter(controller: contr)
     }
 
 }

@@ -45,7 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             centerViewController = nav
         } else {
             let contr = getController(forName: LoginViewController.self, showMenuButton: false)
-            centerViewController = contr
+            let nav = UINavigationController(rootViewController: contr)
+            centerViewController = nav
+            
         }
         
         let menuViewController = getController(forName: MenuViewController.self, showMenuButton: false)

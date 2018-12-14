@@ -14,28 +14,41 @@ import UIKit
 
 protocol LoginBusinessLogic
 {
-  func doSomething(request: Login.Something.Request)
+    func login(request: Login.Something.Request)
 }
 
 protocol LoginDataStore
 {
-  //var name: String { get set }
+    var registerCredentials: Credentials? { get set }
 }
 
 class LoginInteractor: LoginBusinessLogic, LoginDataStore
 {
-  var presenter: LoginPresentationLogic?
-  var worker: LoginWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Login.Something.Request)
-  {
-    worker = LoginWorker()
-    worker?.doSomeWork()
+    var presenter: LoginPresentationLogic?
+    var worker: LoginWorker?
+    var registerCredentials: Credentials? {
+        didSet {
+            if let registerCredentials = registerCredentials {
+                let req = Login.Something.Request(credentials: registerCredentials)
+                login(request: req)
+            }
+        }
+    }
     
-    let response = Login.Something.Response()
-    presenter?.presentSomething(response: response)
-  }
+    func login(request: Login.Something.Request) {
+
+        let loginMut = LoginMutation(email: request.credentials.email, password: request.credentials.password)
+        apollo.client.perform(mutation: loginMut) { res, error in
+            presentGraph(errors: res?.errors, error: error)
+            guard let data = res?.data else { return }
+            if let token = data.loginUser?.string,
+                let userPayload = data.loginUser?.user?.fragments.userPayload {
+                let user = User.saveUser(data: userPayload)
+                CurrentUser.save(user: user, token: token)
+                let res = Login.Something.Response(user: user)
+                self.presenter?.presentLoginedUser(response: res)
+            }
+        }
+
+    }
 }

@@ -12,9 +12,9 @@
 
 import UIKit
 
-@objc protocol RegisterRoutingLogic
+protocol RegisterRoutingLogic
 {
-  func routeToLoginController()
+    func routeToLoginController(credentials: Credentials?)
 }
 
 protocol RegisterDataPassing
@@ -28,8 +28,19 @@ class RegisterRouter: NSObject, RegisterRoutingLogic, RegisterDataPassing
   var dataStore: RegisterDataStore?
   
     
-    func routeToLoginController() {
-        viewController?.dismiss(animated: true, completion: nil)
+    func routeToLoginController(credentials: Credentials?) {
+        
+        if let destinationVC = viewController?.navigationController?.viewControllers.first as? LoginViewController {
+            var destinationDS = destinationVC.router!.dataStore!
+            if let credentials = credentials {
+                destinationDS.registerCredentials = credentials
+            }
+            viewController?.navigationController?.popViewController(animated: true)
+        } else {
+            assert(false, "first viewController should be LoginViewController")
+        }
+
+        
     }
   // MARK: Routing
   

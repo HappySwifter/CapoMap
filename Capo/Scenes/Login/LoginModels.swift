@@ -12,6 +12,12 @@
 
 import UIKit
 
+
+struct Credentials {
+    let email: String
+    let password: String
+}
+
 enum Login
 {
   // MARK: Use cases
@@ -20,12 +26,15 @@ enum Login
   {
     struct Request
     {
+        let credentials: Credentials
     }
     struct Response
     {
+        let user: User
     }
     struct ViewModel
     {
+        let user: User
     }
   }
 }

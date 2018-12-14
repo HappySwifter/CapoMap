@@ -13,15 +13,12 @@
 import UIKit
 
 enum Register
-{
-    // MARK: Use cases
-    
+{    
     enum CreateUser
     {
         struct Request
         {
-            let name: String
-            let password: String
+            let credentials: Credentials
             let confirmPassword: String
             let phone: String
             let city: String
@@ -29,9 +26,11 @@ enum Register
         
         struct Response
         {
+            let credentials: Credentials
         }
         struct ViewModel
         {
+            let credentials: Credentials
         }
     }
 }

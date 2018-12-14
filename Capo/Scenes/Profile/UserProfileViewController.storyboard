@@ -17,13 +17,33 @@
                     <view key="view" contentMode="scaleToFill" id="vrT-Pc-Bg5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVf-Le-e14" customClass="LGButton" customModule="Capo" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="607" width="240" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Wol-CN-fQI"/>
+                                    <constraint firstAttribute="width" constant="240" id="yUh-ML-Z17"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="logoutPressed" destination="tV3-ML-dkJ" eventType="touchUpInside" id="R9b-hu-Eyl"/>
+                                </connections>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rVf-Le-e14" firstAttribute="centerX" secondItem="vrT-Pc-Bg5" secondAttribute="centerX" id="wfE-f3-e9a"/>
+                            <constraint firstItem="kbD-Rs-Zu4" firstAttribute="bottom" secondItem="rVf-Le-e14" secondAttribute="bottom" constant="20" id="z3t-Ei-GBT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kbD-Rs-Zu4"/>
                     </view>
+                    <connections>
+                        <outlet property="logoutButton" destination="rVf-Le-e14" id="Ln9-PP-TbM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vg2-he-tOK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="181"/>
+            <point key="canvasLocation" x="165.59999999999999" y="180.35982008995504"/>
         </scene>
     </scenes>
 </document>

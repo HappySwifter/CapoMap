@@ -14,11 +14,16 @@ import UIKit
 
 protocol RegisterPresentationLogic
 {
+    func presentRegisteringSuccess(response: Register.CreateUser.Response)
 }
 
 class RegisterPresenter: RegisterPresentationLogic
 {
   weak var viewController: RegisterDisplayLogic?
   
+    func presentRegisteringSuccess(response: Register.CreateUser.Response) {
+        let vm = Register.CreateUser.ViewModel(credentials: response.credentials)
+        viewController?.displayRegisternigSuccess(viewModel: vm)
+    }
 
 }

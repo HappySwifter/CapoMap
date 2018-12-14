@@ -15,7 +15,7 @@ import Apollo
 
 protocol LoginDisplayLogic: class
 {
-  func displaySomething(viewModel: Login.Something.ViewModel)
+  func displayUser(viewModel: Login.Something.ViewModel)
 }
 
 class LoginViewController: UIViewController, LoginDisplayLogic
@@ -67,6 +67,10 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   
   // MARK: View lifecycle
   
+    deinit {
+        Log("", type: .warning)
+    }
+    
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -77,6 +81,8 @@ class LoginViewController: UIViewController, LoginDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    assert(navigationController != nil, "LoginViewController should be presented on navigation controller stack")
+    navigationController?.setNavigationBarHidden(true, animated: false)
     #if DEBUG
     emailField.text = "Artem"
     passwordField.text = "4005"
@@ -86,47 +92,26 @@ class LoginViewController: UIViewController, LoginDisplayLogic
     
     loginButton.applyLoginSettings(title: "Войти")
     registerButton.applyLoginSettings(title: "Регистрация")
+  }
+  
 
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
+
+  func displayUser(viewModel: Login.Something.ViewModel)
   {
-    let request = Login.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Login.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
+    router?.routeToProfile()
   }
     
     @IBAction func loginPressed() {
-        guard let name = emailField.text, name.count > 0 else {
+        guard let email = emailField.text, email.count > 0 else {
             return
         }
         guard let password = passwordField.text, password.count > 0 else {
             return
         }
         
-        let loginMut = LoginMutation(email: name, password: password)
-        apollo.client.perform(mutation: loginMut) { res, error in
-            presentGraph(errors: res?.errors, error: error)
-            guard let data = res?.data else { return }
-            if let token = data.loginUser?.string, let userPayload = data.loginUser?.user?.fragments.userPayload {
-                let user = User.saveUser(data: userPayload)
-                CurrentUser.save(user: user, token: token)
-                
-                
-                print(CurrentUser.getToken())
-                print(CurrentUser.getUser())
-            }
-            
-        }
+        let credentials = Credentials(email: email, password: password)
+        let req = Login.Something.Request(credentials: credentials)
+        interactor?.login(request: req)
     }
     
     @IBAction func registerPressed() {
