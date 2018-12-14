@@ -25,25 +25,10 @@ class MenuCell: UITableViewCell {
         label.text = delegate.text
         iconView.image = delegate.image
 
-        #if MEGAFON
-        iconView.image = iconView.image!.withRenderingMode(.alwaysTemplate)
-        if isSelected {
-            label.textColor = orangeGreenColor
-            iconView.tintColor = orangeGreenColor
-        } else {
-            label.textColor = delegate.textColor
-            iconView.tintColor = .black
-        }
-        #else
-        label.textColor = delegate.textColor
-        #endif
+
+        label.textColor = .gray
         
-        
-        
-        label.font = delegate.fontWith(size: realSize(15))
-        
-        
-        
+
         
         if delegate.showDivider {
             dividerView.isHidden = false

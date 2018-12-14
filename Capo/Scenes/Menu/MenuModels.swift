@@ -12,6 +12,42 @@
 
 import UIKit
 
+
+struct MenuCellVM {
+    var text: String
+    var isSelected: Bool
+    var image: UIImage
+    var showDivider: Bool
+}
+
+enum MenuObject: Int, CustomStringConvertible, CaseIterable {
+    case Profile = 0
+    
+    var description: String {
+        switch self {
+        case .Profile:
+            return "ПРОФИЛЬ"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .Profile:
+            return UIImage()
+        }
+    }
+    
+    var showDivider: Bool {
+        switch self {
+        case .Profile:
+            return false
+        default:
+            return true
+        }
+    }
+    
+}
+
 enum Menu
 {
   // MARK: Use cases

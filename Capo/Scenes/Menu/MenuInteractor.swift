@@ -39,3 +39,37 @@ class MenuInteractor: MenuBusinessLogic, MenuDataStore
     presenter?.presentSomething(response: response)
   }
 }
+
+struct MenuVM {
+    
+    var selectedCellIndex: Int = 100
+
+    func numberOfRows() -> Int {
+        return MenuObject.allCases.count
+    }
+    
+    func textFor(index: Int) -> String {
+        return MenuObject(rawValue: index)!.description
+    }
+    
+    func imageFor(index: Int) -> UIImage {
+        return MenuObject(rawValue: index)!.image
+    }
+    
+    func getMenuItemFor(index: Int) -> MenuObject {
+        return MenuObject(rawValue: index)!
+    }
+    
+    func showDividerFor(index: Int) -> Bool {
+        return MenuObject(rawValue: index)!.showDivider
+    }
+    
+    func viewModelForCell(at index: Int) -> MenuCellVM {
+        let textForCell = textFor(index: index)
+        let imageForCell = imageFor(index: index)
+        let showDivider = showDividerFor(index: index)
+        let isSelected = selectedCellIndex == index
+        let cellVM = MenuCellVM(text: textForCell, isSelected: isSelected, image: imageForCell, showDivider: showDivider)
+        return cellVM
+    }
+}

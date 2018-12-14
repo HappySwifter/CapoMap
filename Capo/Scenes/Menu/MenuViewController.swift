@@ -14,76 +14,151 @@ import UIKit
 
 protocol MenuDisplayLogic: class
 {
-  func displaySomething(viewModel: Menu.Something.ViewModel)
+    func displaySomething(viewModel: Menu.Something.ViewModel)
 }
 
 class MenuViewController: UIViewController, MenuDisplayLogic
 {
-  var interactor: MenuBusinessLogic?
-  var router: (NSObjectProtocol & MenuRoutingLogic & MenuDataPassing)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = MenuInteractor()
-    let presenter = MenuPresenter()
-    let router = MenuRouter()
-    viewController.interactor = interactor
-    viewController.router = router
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
+    var interactor: MenuBusinessLogic?
+    var router: (NSObjectProtocol & MenuRoutingLogic & MenuDataPassing)?
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    doSomething()
-  }
-  
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Menu.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Menu.Something.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup()
+    {
+        let viewController = self
+        let interactor = MenuInteractor()
+        let presenter = MenuPresenter()
+        let router = MenuRouter()
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
+    }
+    
+    // MARK: Routing
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
+            }
+        }
+    }
+    
+    // MARK: View lifecycle
+    
+    var viewModel = MenuVM()
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor(hexString: "fafafa")
+        doSomething()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.selectedCellIndex = getSelectedIndex()
+        tableView.reloadData()
+    }
+    // MARK: Do something
+    
+    //@IBOutlet weak var nameTextField: UITextField!
+    
+    func doSomething()
+    {
+        let request = Menu.Something.Request()
+        interactor?.doSomething(request: request)
+    }
+    
+    func displaySomething(viewModel: Menu.Something.ViewModel)
+    {
+        //nameTextField.text = viewModel.name
+    }
+    
+    
+    let headerHeight: CGFloat = realSize(90)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: headerHeight))
+        view.backgroundColor = .white
+        
+        let imView = UIImageView(frame: CGRect(x: 20, y: 10, width: tableView.frame.size.width - 50, height: headerHeight - realSize(25)))
+        imView.contentMode = .scaleAspectFit
+        imView.image = #imageLiteral(resourceName: "logo")
+        
+        view.addSubview(imView)
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+        let cellVM = viewModel.viewModelForCell(at: indexPath.row)
+        cell.configure(withDelegate: cellVM, isSelected: indexPath.row == getSelectedIndex())
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        for cell in tableView.visibleCells {
+            let ip = tableView.indexPath(for: cell)
+            if ip != indexPath {
+                cell.setSelected(false, animated: false)
+            }
+        }
+        let item = viewModel.getMenuItemFor(index: indexPath.row)
+        switch item {
+        case .Profile:
+            router?.routeTo(controller: UserProfileViewController.self)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? MenuCell, let delegate = cell.delegate {
+            cell.setSelected(delegate.isSelected, animated: false)
+        }
+    }
+    
+    
+    func getSelectedIndex() -> Int {
+        guard let navContr = evo_drawerController?.centerViewController as? UINavigationController else { return 100 }
+        let controller = navContr.topViewController
+        if controller is UserProfileViewController {
+            return MenuObject.Profile.rawValue
+        } else {
+            return 100
+        }
+    }
+    
 }
