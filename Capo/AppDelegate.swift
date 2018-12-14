@@ -14,6 +14,7 @@ import DrawerController
 let context = appDelegate.persistentContainer.viewContext
 let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 
+
 func clearEntity<T: NSManagedObject>() -> T? {
     let fetchRequest = NSFetchRequest<T>(entityName: T.description())
     do {

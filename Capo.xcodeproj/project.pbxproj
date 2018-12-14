@@ -14,6 +14,8 @@
 		021A3BA821BD7FD100863A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA721BD7FD100863A25 /* Assets.xcassets */; };
 		021A3BAB21BD7FD100863A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BA921BD7FD100863A25 /* LaunchScreen.storyboard */; };
 		021A3BB621BD83DF00863A25 /* register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BB521BD83DF00863A25 /* register.graphql */; };
+		0229744721C435FD0009A35E /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229744621C435FD0009A35E /* MenuCell.swift */; };
+		0229744A21C4369F0009A35E /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229744921C4369F0009A35E /* UIColorExtensions.swift */; };
 		02677F4121C12C480060C2D1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F4021C12C480060C2D1 /* Helpers.swift */; };
 		02677F5621C1311E0060C2D1 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */; };
 		02677F5721C1311E0060C2D1 /* UserProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */; };
@@ -84,6 +86,8 @@
 		021A3BAA21BD7FD100863A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		021A3BAC21BD7FD100863A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		021A3BB521BD83DF00863A25 /* register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = register.graphql; sourceTree = "<group>"; };
+		0229744621C435FD0009A35E /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		0229744921C4369F0009A35E /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		02677F4021C12C480060C2D1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWorker.swift; sourceTree = "<group>"; };
@@ -199,6 +203,14 @@
 			path = Capo;
 			sourceTree = "<group>";
 		};
+		0229744821C436010009A35E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0229744621C435FD0009A35E /* MenuCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		02677F4221C130BE0060C2D1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +239,7 @@
 		02677F5E21C131D70060C2D1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				0229744821C436010009A35E /* Views */,
 				02677F5F21C131E80060C2D1 /* MenuPresenter.swift */,
 				02677F6021C131E80060C2D1 /* MenuWorker.swift */,
 				02677F6121C131E80060C2D1 /* MenuRouter.swift */,
@@ -279,6 +292,7 @@
 		02677F9021C1408E0060C2D1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0229744921C4369F0009A35E /* UIColorExtensions.swift */,
 				0267801621C1580B0060C2D1 /* UIViewControllerExtension.swift */,
 				0267801421C157320060C2D1 /* Alert.swift */,
 				02677F9121C140990060C2D1 /* LGButtonExtensions.swift */,
@@ -520,6 +534,7 @@
 				02677F5621C1311E0060C2D1 /* UserProfilePresenter.swift in Sources */,
 				02677F8A21C13DD20060C2D1 /* RegisterPresenter.swift in Sources */,
 				02677F6921C131E80060C2D1 /* MenuViewController.swift in Sources */,
+				0229744721C435FD0009A35E /* MenuCell.swift in Sources */,
 				02677F8B21C13DD20060C2D1 /* RegisterWorker.swift in Sources */,
 				02677F5821C1311E0060C2D1 /* UserProfileRouter.swift in Sources */,
 				02677F8D21C13DD20060C2D1 /* RegisterModels.swift in Sources */,
@@ -541,6 +556,7 @@
 				02677F6A21C131E80060C2D1 /* MenuInteractor.swift in Sources */,
 				0267801521C157320060C2D1 /* Alert.swift in Sources */,
 				02677F8E21C13DD20060C2D1 /* RegisterViewController.swift in Sources */,
+				0229744A21C4369F0009A35E /* UIColorExtensions.swift in Sources */,
 				0267800221C147EC0060C2D1 /* MapIcon.swift in Sources */,
 				0267800421C147EC0060C2D1 /* IonIcons.swift in Sources */,
 				027EF49C21BD8B4F009870C1 /* API.swift in Sources */,

@@ -15,7 +15,11 @@ import SwiftMessages
 let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
 
+let screenBounds = UIScreen.main.bounds
 
+func realSize(_ val: CGFloat) -> CGFloat {
+    return ceil(val*screenBounds.width/375) // 375 - ширина iPhone 6, 7
+}
 
 func Log(_ message: String = "", filename: String = #file, function: String = #function, line: Int = #line) {
     let fileName = (filename as NSString).lastPathComponent.replacingOccurrences(of: ".swift", with: "", options: .caseInsensitive , range: nil)
