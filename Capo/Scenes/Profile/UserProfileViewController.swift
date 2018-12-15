@@ -131,6 +131,12 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
                 guard let sSelf = self else { return }
                 let provider = LocalFileImageDataProvider(fileURL: url)
                 sSelf.userImageView.kf.setImage(with: provider)
+                MediaUploader().uploadVideoFromURL(mediaUrl: url, cb: { (serverURL) in
+                    Log(serverURL?.absoluteString ?? "No server url for image", type: .info)
+                    if let serverUrl = serverURL {
+                        
+                    }
+                })
             })
         }
     }

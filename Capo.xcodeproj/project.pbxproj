@@ -16,6 +16,7 @@
 		021A3BB621BD83DF00863A25 /* register.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 021A3BB521BD83DF00863A25 /* register.graphql */; };
 		0229744721C435FD0009A35E /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229744621C435FD0009A35E /* MenuCell.swift */; };
 		0229744A21C4369F0009A35E /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229744921C4369F0009A35E /* UIColorExtensions.swift */; };
+		0229744C21C597AD0009A35E /* MediaUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0229744B21C597AD0009A35E /* MediaUploader.swift */; };
 		02677F4121C12C480060C2D1 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F4021C12C480060C2D1 /* Helpers.swift */; };
 		02677F5621C1311E0060C2D1 /* UserProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */; };
 		02677F5721C1311E0060C2D1 /* UserProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */; };
@@ -88,6 +89,7 @@
 		021A3BB521BD83DF00863A25 /* register.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = register.graphql; sourceTree = "<group>"; };
 		0229744621C435FD0009A35E /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		0229744921C4369F0009A35E /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		0229744B21C597AD0009A35E /* MediaUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaUploader.swift; sourceTree = "<group>"; };
 		02677F4021C12C480060C2D1 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		02677F5021C1311E0060C2D1 /* UserProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePresenter.swift; sourceTree = "<group>"; };
 		02677F5121C1311E0060C2D1 /* UserProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileWorker.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				0267801A21C16AF70060C2D1 /* schema.json */,
 				021A3B9D21BD7FCD00863A25 /* AppDelegate.swift */,
+				0229744B21C597AD0009A35E /* MediaUploader.swift */,
 				02677F9321C146C30060C2D1 /* Vendor */,
 				02677F9021C1408E0060C2D1 /* Extensions */,
 				02677F6F21C134B50060C2D1 /* Model */,
@@ -570,6 +573,7 @@
 				0267800621C147EC0060C2D1 /* ThemifyIcon.swift in Sources */,
 				02677F7221C138960060C2D1 /* Model.swift in Sources */,
 				021A3BA621BD7FCE00863A25 /* Capo.xcdatamodeld in Sources */,
+				0229744C21C597AD0009A35E /* MediaUploader.swift in Sources */,
 				02677F6E21C1347F0060C2D1 /* CurrentUser.swift in Sources */,
 				02677F6521C131E80060C2D1 /* MenuPresenter.swift in Sources */,
 				0267800721C147EC0060C2D1 /* FontAwesome.swift in Sources */,
