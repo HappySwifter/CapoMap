@@ -11,15 +11,13 @@
 //
 
 import UIKit
+import Kingfisher
 
-
-protocol UserProfileDisplayLogic: class
-{
+protocol UserProfileDisplayLogic: class {
     func displaySomething(viewModel: UserProfile.Something.ViewModel)
 }
 
-class UserProfileViewController: UIViewController, UserProfileDisplayLogic
-{
+class UserProfileViewController: UITableViewController, UserProfileDisplayLogic {
     var interactor: UserProfileBusinessLogic?
     var router: (NSObjectProtocol & UserProfileRoutingLogic & UserProfileDataPassing)?
     
@@ -68,23 +66,77 @@ class UserProfileViewController: UIViewController, UserProfileDisplayLogic
     // MARK: View lifecycle
     
     @IBOutlet weak var logoutButton: LGButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        userImageView.isUserInteractionEnabled = true
+        let userImageTap = UITapGestureRecognizer(target: self, action: #selector(userImageViewTapped))
+        userImageView.addGestureRecognizer(userImageTap)
         logoutButton.applyLoginSettings(title: "Выйти")
     }
     
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
+    }
+
     func displaySomething(viewModel: UserProfile.Something.ViewModel)
     {
         //nameTextField.text = viewModel.name
     }
+    
+    
+    @objc func userImageViewTapped() {
+        let alert = UIAlertController(title: "Сменить фото", message: nil, preferredStyle: .actionSheet)
+        let galleryAction = UIAlertAction(title: "Выбрать из галереи", style: .default) { [weak self] (_) in
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            self?.present(imagePicker, animated: true, completion: nil)
+        }
+        let cameraAction = UIAlertAction(title: "Сделать фото", style: .default) { [weak self] (_) in
+            let imagePicker = UIImagePickerController()
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            self?.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) { (_) in }
+        
+        alert.addAction(galleryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     @IBAction func logoutPressed() {
         CurrentUser.removeData()
         let contr = getController(forName: LoginViewController.self, showMenuButton: false)
         setCenter(controller: contr)
     }
+}
+
+extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let url = info[.imageURL] as! URL? {
+            picker.dismiss(animated: true, completion: { [weak self] in
+                guard let sSelf = self else { return }
+                let provider = LocalFileImageDataProvider(fileURL: url)
+                sSelf.userImageView.kf.setImage(with: provider)
+            })
+        }
+    }
+    
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
 }

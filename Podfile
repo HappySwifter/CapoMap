@@ -7,8 +7,8 @@ target 'Capo' do
   pod "Apollo"
   pod 'DrawerController'
   pod 'SwiftMessages'
-#  pod 'LGButton'
-
+  pod 'Kingfisher'
+  pod 'Alamofire'
 end
 
 post_install do |installer|
