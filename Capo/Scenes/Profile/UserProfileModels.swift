@@ -16,16 +16,35 @@ enum UserProfile
 {
   // MARK: Use cases
   
-  enum Something
+  enum FetchUser
   {
     struct Request
     {
     }
     struct Response
     {
+        let user: User
     }
     struct ViewModel
     {
+        let user: User
     }
   }
+    
+    enum UpdateUser
+    {
+        struct Request
+        {
+            let name: String?
+            let userProfileImage: String?
+        }
+        struct Response
+        {
+            let user: User
+        }
+        struct ViewModel
+        {
+            let user: User
+        }
+    }
 }

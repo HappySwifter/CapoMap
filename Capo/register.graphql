@@ -15,7 +15,14 @@ mutation Login($email: String, $password: String) {
     }
 }
 
+mutation UpdateUser($name: String, $imagePath: String) {
+    updateUser(name: $name, profileImagePath: $imagePath) {
+        ...UserPayload
+    }
+}
+
 fragment UserPayload on User {
     email
     id
+    profileImagePath
 }

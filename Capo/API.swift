@@ -203,8 +203,8 @@ public final class LoginMutation: GraphQLMutation {
           self.resultMap = unsafeResultMap
         }
 
-        public init(email: String? = nil, id: Int) {
-          self.init(unsafeResultMap: ["__typename": "User", "email": email, "id": id])
+        public init(email: String? = nil, id: Int, profileImagePath: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "User", "email": email, "id": id, "profileImagePath": profileImagePath])
         }
 
         public var __typename: String {
@@ -246,9 +246,109 @@ public final class LoginMutation: GraphQLMutation {
   }
 }
 
+public final class UpdateUserMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation UpdateUser($name: String, $imagePath: String) {\n  updateUser(name: $name, profileImagePath: $imagePath) {\n    __typename\n    ...UserPayload\n  }\n}"
+
+  public var queryDocument: String { return operationDefinition.appending(UserPayload.fragmentDefinition) }
+
+  public var name: String?
+  public var imagePath: String?
+
+  public init(name: String? = nil, imagePath: String? = nil) {
+    self.name = name
+    self.imagePath = imagePath
+  }
+
+  public var variables: GraphQLMap? {
+    return ["name": name, "imagePath": imagePath]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateUser", arguments: ["name": GraphQLVariable("name"), "profileImagePath": GraphQLVariable("imagePath")], type: .object(UpdateUser.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(updateUser: UpdateUser? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "updateUser": updateUser.flatMap { (value: UpdateUser) -> ResultMap in value.resultMap }])
+    }
+
+    public var updateUser: UpdateUser? {
+      get {
+        return (resultMap["updateUser"] as? ResultMap).flatMap { UpdateUser(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "updateUser")
+      }
+    }
+
+    public struct UpdateUser: GraphQLSelectionSet {
+      public static let possibleTypes = ["User"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLFragmentSpread(UserPayload.self),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(email: String? = nil, id: Int, profileImagePath: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "email": email, "id": id, "profileImagePath": profileImagePath])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var fragments: Fragments {
+        get {
+          return Fragments(unsafeResultMap: resultMap)
+        }
+        set {
+          resultMap += newValue.resultMap
+        }
+      }
+
+      public struct Fragments {
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public var userPayload: UserPayload {
+          get {
+            return UserPayload(unsafeResultMap: resultMap)
+          }
+          set {
+            resultMap += newValue.resultMap
+          }
+        }
+      }
+    }
+  }
+}
+
 public struct UserPayload: GraphQLFragment {
   public static let fragmentDefinition =
-    "fragment UserPayload on User {\n  __typename\n  email\n  id\n}"
+    "fragment UserPayload on User {\n  __typename\n  email\n  id\n  profileImagePath\n}"
 
   public static let possibleTypes = ["User"]
 
@@ -256,6 +356,7 @@ public struct UserPayload: GraphQLFragment {
     GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
     GraphQLField("email", type: .scalar(String.self)),
     GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+    GraphQLField("profileImagePath", type: .scalar(String.self)),
   ]
 
   public private(set) var resultMap: ResultMap
@@ -264,8 +365,8 @@ public struct UserPayload: GraphQLFragment {
     self.resultMap = unsafeResultMap
   }
 
-  public init(email: String? = nil, id: Int) {
-    self.init(unsafeResultMap: ["__typename": "User", "email": email, "id": id])
+  public init(email: String? = nil, id: Int, profileImagePath: String? = nil) {
+    self.init(unsafeResultMap: ["__typename": "User", "email": email, "id": id, "profileImagePath": profileImagePath])
   }
 
   public var __typename: String {
@@ -294,6 +395,16 @@ public struct UserPayload: GraphQLFragment {
     }
     set {
       resultMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  /// Image path of the user profile, or null if unknown.
+  public var profileImagePath: String? {
+    get {
+      return resultMap["profileImagePath"] as? String
+    }
+    set {
+      resultMap.updateValue(newValue, forKey: "profileImagePath")
     }
   }
 }

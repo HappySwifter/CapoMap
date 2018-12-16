@@ -14,7 +14,7 @@ import UIKit
 
 protocol UserProfilePresentationLogic
 {
-  func presentSomething(response: UserProfile.Something.Response)
+  func presentUser(response: UserProfile.FetchUser.Response)
 }
 
 class UserProfilePresenter: UserProfilePresentationLogic
@@ -23,9 +23,9 @@ class UserProfilePresenter: UserProfilePresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: UserProfile.Something.Response)
+  func presentUser(response: UserProfile.FetchUser.Response)
   {
-    let viewModel = UserProfile.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+    let viewModel = UserProfile.FetchUser.ViewModel(user: response.user)
+    viewController?.displayUser(viewModel: viewModel)
   }
 }

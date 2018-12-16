@@ -28,6 +28,7 @@ extension User {
         }
 
         user.email = data.email
+        user.profileImagePath = data.profileImagePath
         appDelegate.saveContext()
         return user
     }

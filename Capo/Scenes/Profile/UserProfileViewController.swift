@@ -14,7 +14,7 @@ import UIKit
 import Kingfisher
 
 protocol UserProfileDisplayLogic: class {
-    func displaySomething(viewModel: UserProfile.Something.ViewModel)
+    func displayUser(viewModel: UserProfile.FetchUser.ViewModel)
 }
 
 class UserProfileViewController: UITableViewController, UserProfileDisplayLogic {
@@ -73,10 +73,14 @@ class UserProfileViewController: UITableViewController, UserProfileDisplayLogic 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        userImageView.clipsToBounds = true
         userImageView.isUserInteractionEnabled = true
         let userImageTap = UITapGestureRecognizer(target: self, action: #selector(userImageViewTapped))
         userImageView.addGestureRecognizer(userImageTap)
         logoutButton.applyLoginSettings(title: "Выйти")
+        
+        let req = UserProfile.FetchUser.Request()
+        interactor?.fetchUser(request: req)
     }
     
 
@@ -85,8 +89,13 @@ class UserProfileViewController: UITableViewController, UserProfileDisplayLogic 
         userImageView.layer.cornerRadius = userImageView.frame.size.height / 2
     }
 
-    func displaySomething(viewModel: UserProfile.Something.ViewModel)
+    func displayUser(viewModel: UserProfile.FetchUser.ViewModel)
     {
+        if let image = viewModel.user.profileImagePath {
+            userImageView.kf.setImage(with: image.appendingServerURL)
+        }
+        
+
         //nameTextField.text = viewModel.name
     }
     
@@ -131,10 +140,12 @@ extension UserProfileViewController: UIImagePickerControllerDelegate, UINavigati
                 guard let sSelf = self else { return }
                 let provider = LocalFileImageDataProvider(fileURL: url)
                 sSelf.userImageView.kf.setImage(with: provider)
-                MediaUploader().uploadVideoFromURL(mediaUrl: url, cb: { (serverURL) in
-                    Log(serverURL?.absoluteString ?? "No server url for image", type: .info)
+                MediaUploader().uploadMediaFromURL(mediaUrl: url, cb: { (serverURL) in
+                    Log(serverURL ?? "No server url for image", type: .info)
                     if let serverUrl = serverURL {
-                        
+                        let updateUserRequest = UserProfile.UpdateUser.Request(name: nil,
+                                                                               userProfileImage: serverURL)
+                        sSelf.interactor?.updateUser(request: updateUserRequest)
                     }
                 })
             })

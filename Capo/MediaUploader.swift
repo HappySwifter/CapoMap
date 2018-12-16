@@ -8,7 +8,7 @@ var backgroundManager = Alamofire.SessionManager(configuration: URLSessionConfig
 
 
 class MediaUploader {
-    func uploadVideoFromURL(mediaUrl: URL, cb: @escaping (URL?) -> Void) {
+    func uploadMediaFromURL(mediaUrl: URL, cb: @escaping (String?) -> Void) {
 
         guard let imageData = try? Data(contentsOf: mediaUrl), let image = UIImage(data: imageData), let data = image.jpegData(compressionQuality: 0.5) else {
             cb(nil)
@@ -38,7 +38,7 @@ class MediaUploader {
 
                         if let json = response.result.value as? [String: String],
                             let imageURL = json["url"] {
-                            cb(URL(string: imageURL))
+                            cb(imageURL)
                         } else {
                             Log("bad response format", type: .error)
                             cb(nil)
