@@ -1,6 +1,7 @@
 # CapoMap
 
 
+Project is under development.
 
 Server code for this client is [here](https://github.com/HappySwifter/CapoServer)
 
