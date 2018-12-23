@@ -17,9 +17,9 @@ import Apollo
     let serverURL = URL(string: "http://192.168.1.63:8080")!
 #endif
 
-let apollo = Apollo()
+let apollo = ApolloHelper()
 
-class Apollo {
+class ApolloHelper {
     private var apollo: ApolloClient?
     
     var client: ApolloClient {

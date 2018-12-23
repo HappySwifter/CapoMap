@@ -1,11 +1,11 @@
 
-mutation Register($name: String, $email: String, $password: String) {
+mutation Register($name: String!, $email: String!, $password: String!) {
     createUser(name: $name, email: $email, password: $password) {
         email
     }
 }
 
-mutation Login($email: String, $password: String) {
+mutation Login($email: String!, $password: String!) {
     loginUser(email: $email, password: $password) {
         string
         expiresAt
@@ -18,6 +18,13 @@ mutation Login($email: String, $password: String) {
 mutation UpdateUser($name: String, $imagePath: String) {
     updateUser(name: $name, profileImagePath: $imagePath) {
         ...UserPayload
+    }
+}
+
+mutation CreateEvent($name: String!, $eventType: EventType!) {
+    createEvent(name: $name, eventType: $eventType) {
+        title
+        eventType
     }
 }
 

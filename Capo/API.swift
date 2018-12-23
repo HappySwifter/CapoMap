@@ -2,15 +2,61 @@
 
 import Apollo
 
+/// On of the event type
+public enum EventType: RawRepresentable, Equatable, Apollo.JSONDecodable, Apollo.JSONEncodable {
+  public typealias RawValue = String
+  /// Seminar
+  case seminar
+  /// Roda
+  case roda
+  /// Training
+  case training
+  /// Party
+  case party
+  /// Auto generated constant for unknown enum values
+  case __unknown(RawValue)
+
+  public init?(rawValue: RawValue) {
+    switch rawValue {
+      case "seminar": self = .seminar
+      case "roda": self = .roda
+      case "training": self = .training
+      case "party": self = .party
+      default: self = .__unknown(rawValue)
+    }
+  }
+
+  public var rawValue: RawValue {
+    switch self {
+      case .seminar: return "seminar"
+      case .roda: return "roda"
+      case .training: return "training"
+      case .party: return "party"
+      case .__unknown(let value): return value
+    }
+  }
+
+  public static func == (lhs: EventType, rhs: EventType) -> Bool {
+    switch (lhs, rhs) {
+      case (.seminar, .seminar): return true
+      case (.roda, .roda): return true
+      case (.training, .training): return true
+      case (.party, .party): return true
+      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
+      default: return false
+    }
+  }
+}
+
 public final class RegisterMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation Register($name: String, $email: String, $password: String) {\n  createUser(name: $name, email: $email, password: $password) {\n    __typename\n    email\n  }\n}"
+    "mutation Register($name: String!, $email: String!, $password: String!) {\n  createUser(name: $name, email: $email, password: $password) {\n    __typename\n    email\n  }\n}"
 
-  public var name: String?
-  public var email: String?
-  public var password: String?
+  public var name: String
+  public var email: String
+  public var password: String
 
-  public init(name: String? = nil, email: String? = nil, password: String? = nil) {
+  public init(name: String, email: String, password: String) {
     self.name = name
     self.email = email
     self.password = password
@@ -88,14 +134,14 @@ public final class RegisterMutation: GraphQLMutation {
 
 public final class LoginMutation: GraphQLMutation {
   public let operationDefinition =
-    "mutation Login($email: String, $password: String) {\n  loginUser(email: $email, password: $password) {\n    __typename\n    string\n    expiresAt\n    user {\n      __typename\n      ...UserPayload\n    }\n  }\n}"
+    "mutation Login($email: String!, $password: String!) {\n  loginUser(email: $email, password: $password) {\n    __typename\n    string\n    expiresAt\n    user {\n      __typename\n      ...UserPayload\n    }\n  }\n}"
 
   public var queryDocument: String { return operationDefinition.appending(UserPayload.fragmentDefinition) }
 
-  public var email: String?
-  public var password: String?
+  public var email: String
+  public var password: String
 
-  public init(email: String? = nil, password: String? = nil) {
+  public init(email: String, password: String) {
     self.email = email
     self.password = password
   }
@@ -340,6 +386,99 @@ public final class UpdateUserMutation: GraphQLMutation {
           set {
             resultMap += newValue.resultMap
           }
+        }
+      }
+    }
+  }
+}
+
+public final class CreateEventMutation: GraphQLMutation {
+  public let operationDefinition =
+    "mutation CreateEvent($name: String!, $eventType: EventType!) {\n  createEvent(name: $name, eventType: $eventType) {\n    __typename\n    title\n    eventType\n  }\n}"
+
+  public var name: String
+  public var eventType: EventType
+
+  public init(name: String, eventType: EventType) {
+    self.name = name
+    self.eventType = eventType
+  }
+
+  public var variables: GraphQLMap? {
+    return ["name": name, "eventType": eventType]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createEvent", arguments: ["name": GraphQLVariable("name"), "eventType": GraphQLVariable("eventType")], type: .object(CreateEvent.selections)),
+    ]
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(createEvent: CreateEvent? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "createEvent": createEvent.flatMap { (value: CreateEvent) -> ResultMap in value.resultMap }])
+    }
+
+    public var createEvent: CreateEvent? {
+      get {
+        return (resultMap["createEvent"] as? ResultMap).flatMap { CreateEvent(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "createEvent")
+      }
+    }
+
+    public struct CreateEvent: GraphQLSelectionSet {
+      public static let possibleTypes = ["Event"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("title", type: .scalar(String.self)),
+        GraphQLField("eventType", type: .nonNull(.scalar(EventType.self))),
+      ]
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(title: String? = nil, eventType: EventType) {
+        self.init(unsafeResultMap: ["__typename": "Event", "title": title, "eventType": eventType])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      /// title
+      public var title: String? {
+        get {
+          return resultMap["title"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "title")
+        }
+      }
+
+      /// event type
+      public var eventType: EventType {
+        get {
+          return resultMap["eventType"]! as! EventType
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "eventType")
         }
       }
     }

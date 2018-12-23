@@ -467,7 +467,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		021A3BB221BD807400863A25 /* Generate Apollo GraphQL API */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
