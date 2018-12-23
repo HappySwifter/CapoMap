@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class ViewController: UIViewController {
+import DrawerController
+class ViewController: DrawerController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,19 +9,59 @@
 import UIKit
 import CoreData
 import Apollo
+import DrawerController
 
-let apollo = ApolloClient(url: URL(string: "http://localhost:8080/graphql")!)
+let context = appDelegate.persistentContainer.viewContext
+let appDelegate = (UIApplication.shared.delegate as! AppDelegate)
 
+
+func clearEntity<T: NSManagedObject>() -> T? {
+    let fetchRequest = NSFetchRequest<T>(entityName: T.description())
+    do {
+        let result = try context.fetch(fetchRequest)
+        for obj in result {
+            context.delete(obj)
+        }
+    } catch {
+        Log("Error \(error.localizedDescription)", type: .error)
+    }
+    return nil
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var drawerController: DrawerController?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        apollo.client.cacheKeyForObject = { $0["id"] }
+
+        let centerViewController: UIViewController
+        if CurrentUser.getToken() != nil {
+            let contr = getController(forName: UserProfileViewController.self)
+            let nav = UINavigationController(rootViewController: contr)
+            centerViewController = nav
+        } else {
+            let contr = getController(forName: LoginViewController.self, showMenuButton: false)
+            let nav = UINavigationController(rootViewController: contr)
+            centerViewController = nav
+            
+        }
         
+        let menuViewController = getController(forName: MenuViewController.self, showMenuButton: false)
+        let menuNav = UINavigationController(rootViewController: menuViewController)
         
+        self.drawerController = DrawerController(centerViewController: centerViewController, leftDrawerViewController: menuNav)
+        
+        self.drawerController?.maximumRightDrawerWidth = UIScreen.main.bounds.size.width - 75
+        self.drawerController?.openDrawerGestureModeMask = .all
+        self.drawerController?.closeDrawerGestureModeMask = .all
+        self.drawerController?.drawerVisualStateBlock = DrawerVisualState.animatedHamburgerButtonVisualStateBlock
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = self.drawerController
         
         return true
 
